@@ -3,3 +3,11 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .DS_Store
+
+# Noir / Barretenberg build output
+target/
+
+# Foundry build output and dependencies
+**/contracts/out/
+**/contracts/cache/
+**/contracts/lib/
