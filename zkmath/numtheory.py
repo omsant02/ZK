@@ -23,3 +23,21 @@ def power(a, n):
         base *= base       # a -> a^2 -> a^4 -> a^8 ...
         n >>= 1            # drop the digit we just used
     return result
+
+
+
+
+def extended_gcd(a, b):
+    """Return (g, x, y) with g = gcd(a, b) and a*x + b*y == g.
+
+    a and b must be non-negative integers.
+    """
+    old_r, r = a, b
+    old_x, x = 1, 0
+    old_y, y = 0, 1
+    while r != 0:
+        q = old_r // r
+        old_r, r = r, old_r - q * r
+        old_x, x = x, old_x - q * x
+        old_y, y = y, old_y - q * y
+    return old_r, old_x, old_y
