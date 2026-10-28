@@ -41,3 +41,18 @@ def extended_gcd(a, b):
         old_x, x = x, old_x - q * x
         old_y, y = y, old_y - q * y
     return old_r, old_x, old_y
+
+
+
+
+def mod_inverse(a, n):
+    """Return x in range(n) with (a * x) % n == 1.
+
+    Raises ValueError if a has no inverse modulo n (gcd(a, n) != 1).
+    """
+    if n < 2:
+        raise ValueError("modulus must be at least 2")
+    g, x, _ = extended_gcd(a % n, n)
+    if g != 1:
+        raise ValueError(f"{a} has no inverse modulo {n}")
+    return x % n
