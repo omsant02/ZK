@@ -56,3 +56,23 @@ def mod_inverse(a, n):
     if g != 1:
         raise ValueError(f"{a} has no inverse modulo {n}")
     return x % n
+
+
+
+def mod_pow(a, n, m):
+    """Compute (a ** n) % m by square-and-multiply, reducing mod m at every step.
+
+    n must be non-negative and m must be positive.
+    """
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if m < 1:
+        raise ValueError("modulus must be positive")
+    result = 1 % m
+    base = a % m
+    while n > 0:
+        if n & 1:
+            result = (result * base) % m
+        base = (base * base) % m
+        n >>= 1
+    return result
